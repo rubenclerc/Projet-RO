@@ -52,7 +52,7 @@ namespace TP1
             double y2 = v2.latitude * (Math.PI / 180);
 
             // Calcul
-            res = Math.Abs(r * Math.Acos(Math.Sin(y1) * Math.Sin(y2)) + (Math.Cos(y1)*Math.Cos(y2))*Math.Cos(x1*x2));
+            res = Math.Abs(r * Math.Acos( (Math.Sin(y1) * Math.Sin(y2)) + (Math.Cos(y1) * Math.Cos(y2) * Math.Cos(x1-x2)) ));
 
             return res;
         }

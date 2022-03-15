@@ -7,11 +7,9 @@ namespace TP1
     {
         static void Main(string[] args)
         {
-            Parser p = new Parser("C:\\Users\\rc438799\\Desktop\\top80.txt");
-            List<Ville> villes = p.Parse();
-            Tournee t = new Tournee(villes);
-
-            t.AfficheVilles();
+            Tournee t = new Tournee();
+            t.TourneeCroissante();
+            t.AfficheTour();
         }
     }
 }
