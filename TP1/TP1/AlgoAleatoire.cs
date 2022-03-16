@@ -10,7 +10,7 @@ namespace TP1
 
         public override Tournee Executer()
         {
-            List<Ville> shufVilles = this.Villes;
+            List<Ville> shufVilles = new List<Ville>(this.Villes);
             Random rand = new Random();
             int len = shufVilles.Count;
             int i = 0;

@@ -23,6 +23,13 @@ namespace TP1
             Console.Write("Algo aléatoire: ");
             t.AfficheTour();
             Console.WriteLine("Cout: " + t.Cout());
+
+            // Algo plus proche voisin
+            AlgoPlusProcheVoisin algoPlusProcheVoisin = new AlgoPlusProcheVoisin(villes);
+            t = algoPlusProcheVoisin.Executer();
+            Console.Write("Algo plus proche voisin: ");
+            t.AfficheTour();
+            Console.WriteLine("Cout: " + t.Cout());
         }
     }
 }

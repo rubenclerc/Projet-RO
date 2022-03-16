@@ -57,9 +57,10 @@ namespace TP1
             return res;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return this.Id + ": " + this.Nom + " se situe en " + this.Latitude + " et " + this.Longitude;
         }
+
     }
 }
