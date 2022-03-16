@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP1
 {
-    class Tournee
+    public class Tournee
     {
         // Attributs
         private List<Ville> villes;
@@ -32,32 +32,44 @@ namespace TP1
             }
         }
 
-        public void TourneeCroissante()
-        {
-            Parser p = new Parser("C:\\Users\\rc438799\\Desktop\\top80.txt");
-            List<Ville> villes = p.Parse();
-            this.Villes = villes;
-        }
-
+        /// <summary>
+        /// Affiche les identifiants des villes de la tournée
+        /// </summary>
         public void AfficheTour()
         {
+            Console.Write("[");
+
             foreach(Ville v in this.Villes)
             {
-                Console.Write(v.Id + ", ");
+                if(this.Villes.IndexOf(v) != 0)
+                {
+                    Console.Write(", ");
+                }
+
+                Console.Write(v.Id);
             }
+
+            Console.WriteLine("]");
         }
 
+        /// <summary>
+        /// Calcule le cout de la tournée (distance totale)
+        /// </summary>
+        /// <returns>cout</returns>
         public double Cout()
         {
-            double cout = 0;
+            double res = 0;
 
-            foreach(Ville v in this.Villes)
+            // Calcule le tour
+            for(int i=0; i < this.Villes.Count-1; i++)
             {
-
+                res += this.Villes[i].Distance(this.Villes[i + 1]);
             }
 
-            return cout;
-        }
+            // Revient au départ
+            res += this.Villes[this.Villes.Count - 1].Distance(this.Villes[0]);
 
+            return res;
+        }
     }
 }

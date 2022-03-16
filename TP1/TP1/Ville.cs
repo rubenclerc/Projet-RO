@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP1
 {
-    class Ville
+    public class Ville
     {
         // Attributs
         private int id;

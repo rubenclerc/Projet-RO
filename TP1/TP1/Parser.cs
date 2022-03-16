@@ -6,22 +6,10 @@ using System.Globalization;
 
 namespace TP1
 {
-    class Parser
+    public class Parser
     {
-        // Attributs
-        private String path;
-
-        // Propriétés
-        public string Path { get => path; set => path = value; }
-
-        // Constructeur
-        public Parser(String path)
-        {
-            this.Path = path;
-        }
-
         // Méthodes
-        public List<Ville> Parse()
+        public static List<Ville> Parse(string path)
         {
             // Initialisation
             List<Ville> villes = new List<Ville>();
@@ -35,7 +23,7 @@ namespace TP1
             provider.NumberGroupSeparator = ",";
 
             // Chaque ligne est transformée en une ville et est ajoutée à la liste
-            foreach(string line in File.ReadLines(this.path))
+            foreach(string line in File.ReadLines(path))
             {
                 words  = line.Split(" ");
 
