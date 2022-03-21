@@ -13,7 +13,7 @@ namespace TP1
             List<Ville> shufVilles = new List<Ville>(this.Villes);
             Random rand = new Random();
             int len = shufVilles.Count;
-            int i = 0;
+            int i;
 
             while(len > 1)
             {

@@ -10,15 +10,18 @@ namespace TP1
 
         public override Tournee Executer()
         {
-            List<Ville> nonVisite = this.Villes;
+
+            // Initialisation
+            List<Ville> nonVisite = new List<Ville>(this.Villes);
             List<Ville> visite = new List<Ville>();
 
             Ville depart = nonVisite[0];
             visite.Add(depart);
             nonVisite.Remove(depart);
 
-            Ville aAjouter = null;
+            Ville aAjouter;
 
+            // Tant qu'il reste une ville non visitée on ajoute la ville la plus proche
             while(nonVisite.Count > 0)
             {
                 aAjouter = this.PlusProche(depart, nonVisite);
