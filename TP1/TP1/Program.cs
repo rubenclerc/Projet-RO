@@ -8,7 +8,7 @@ namespace TP1
         static void Main()
         {
             // Villes
-            List<Ville> villes = Parser.Parse("C:\\Users\\rc438799\\Desktop\\Projet-RO\\instances\\top80.txt");
+            List<Ville> villes = Parser.Parse("G:\\Mon Drive\\Cours\\S4\\RO\\TP\\Projet-RO\\instances\\top80.txt");
 
             // Algo croissant
             AlgoCroissant algoCroissant = new AlgoCroissant(villes);
@@ -49,6 +49,20 @@ namespace TP1
             AlgoInsertionLoin algoInsertionLoin = new AlgoInsertionLoin(villes);
             t = algoInsertionLoin.Executer();
             Console.Write("Algo insertion loin: ");
+            t.AfficheTour();
+            Console.WriteLine("Cout: " + t.Cout() + "km");
+
+            // Algo Recherche Locale: echange de successeurs premier d'abord
+            AlgoRechLocSuccPremier algoRechLocSuccPremier = new AlgoRechLocSuccPremier(villes);
+            t = algoRechLocSuccPremier.Executer();
+            Console.Write("Algo recherche local (ech de succs premier d'abord): ");
+            t.AfficheTour();
+            Console.WriteLine("Cout: " + t.Cout() + "km");
+
+            // Algo Recherche Locale: echange de successeurs meilleur d'abord
+            AlgoRechLocSuccMeilleur algoRechLocSuccMeilleur = new AlgoRechLocSuccMeilleur(villes);
+            t = algoRechLocSuccMeilleur.Executer();
+            Console.Write("Algo recherche local (ech de succs meilleur d'abord): ");
             t.AfficheTour();
             Console.WriteLine("Cout: " + t.Cout() + "km");
 
