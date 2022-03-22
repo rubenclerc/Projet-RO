@@ -57,6 +57,79 @@ namespace TP1
             return res;
         }
 
+        public double DistanceCouple(Ville a, Ville b)
+        {
+            return a.Distance(this) + this.Distance(b) - a.Distance(b);
+        }
+
+        public double DistanceTournee(List<Ville> t)
+        {
+            // Initialisation
+            double min = 999999;
+            double distance;
+            Ville suivante;
+
+            // Renvoie le min des couples de villes de la tournée
+            foreach(Ville v in t)
+            {
+                // Si on est pas à la fin on prend la suivante, sinon la première
+                if(t.IndexOf(v) < t.Count - 1)
+                {
+                    suivante = t[t.IndexOf(v) + 1];
+                }
+
+                else
+                {
+                    suivante = t[0];
+                }
+
+                distance = this.DistanceCouple(v, suivante);
+
+                if (distance < min)
+                {
+                    min = distance;
+                }
+            }
+
+            return min;
+        }
+
+        // Retourne la ville à partir de laquelle il faut ajouter à la tournée
+        public Ville VilleDistance(List<Ville> t)
+        {
+            // Initialisation
+            double min = 999999;
+            double distance;
+            Ville suivante;
+            Ville res = null; ;
+
+            // Renvoie le min des couples de villes de la tournée
+            foreach(Ville v in t)
+            {
+                // Si on est pas à la fin on prend la suivante, sinon la première
+                if(t.IndexOf(v) < t.Count - 1)
+                {
+                    suivante = t[t.IndexOf(v) + 1];
+                }
+
+                else
+                {
+                    suivante = t[0];
+                }
+
+                distance = this.DistanceCouple(v, suivante);
+
+                if (distance < min)
+                {
+                    min = distance;
+                    res = v;
+                }
+            }
+
+            return res;
+        }
+
+
         public override string ToString()
         {
             return this.Id + ": " + this.Nom + " se situe en " + this.Latitude + " et " + this.Longitude;

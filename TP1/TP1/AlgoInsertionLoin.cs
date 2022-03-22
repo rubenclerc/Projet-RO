@@ -13,33 +13,35 @@ namespace TP1
             // Initialisation
             List<Ville> nonVisite = new List<Ville>(this.Villes);
             List<Ville> res = this.PlusEloignes(nonVisite);
-            Ville suivante = null;
             double distance;
             double distanceMax = 0;
             int index = 0;
-;
-            while(nonVisite.Count > 0)
-            {
-                foreach (Ville depart in res)
-                {
-                    foreach (Ville arrivee in nonVisite)
-                    {
-                        distance = depart.Distance(arrivee);
+            Ville aInserer = null;
 
-                        if (distance > distanceMax)
-                        {
-                            distanceMax = distance;
-                            suivante = arrivee;
-                            index = res.IndexOf(depart);
-                        }
+            // Supprime les 2 villes les plus éloignées de villes non visitées
+            nonVisite.Remove(res[0]);
+            nonVisite.Remove(res[1]);
+
+            // Tant qu'il reste des villes non visitées, on ajoute à la tournée la ville la plus loin d'elle
+            while (nonVisite.Count > 0)
+            {
+                // Trouve la ville la plus loin de la tournée
+                foreach (Ville v in nonVisite)
+                {
+                    distance = v.DistanceTournee(res);
+
+                    if (distance > distanceMax)
+                    {
+                        distanceMax = distance;
+                        index = res.IndexOf(v.VilleDistance(res)) + 1;
+                        aInserer = v;
                     }
 
                 }
 
-                // Mise à jour des variables
-                res.Insert(index + 1, suivante);
+                res.Insert(index, aInserer);
                 distanceMax = 0;
-                nonVisite.Remove(suivante);
+                nonVisite.Remove(aInserer);
             }
 
             return new Tournee(res);

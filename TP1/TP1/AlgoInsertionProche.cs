@@ -13,39 +13,35 @@ namespace TP1
             // Initialisation
             List<Ville> nonVisite = new List<Ville>(this.Villes);
             List<Ville> res = this.PlusEloignes(nonVisite);
-            Ville suivante = null;
-            double distanceMin = 999999;
             double distance;
+            double distanceMin = 9999;
             int index = 0;
+            Ville aInserer = null;
 
             // Supprime les 2 villes les plus éloignées de villes non visitées
             nonVisite.Remove(res[0]);
             nonVisite.Remove(res[1]);
 
             // Tant qu'il reste des villes non visitées, on ajoute à la tournée la ville la plus proche d'elle
-            while(nonVisite.Count > 0)
+            while (nonVisite.Count > 0)
             {
-                // Pour chaque ville de la tournée on teste successivement la distance aux villes non visitées
-                foreach(Ville depart in res)
+                // Trouve la ville la plus proche de la tournée
+                foreach(Ville v in nonVisite)
                 {
-                    foreach(Ville arrivee in nonVisite)
-                    {
-                        distance = depart.Distance(arrivee);
+                    distance = v.DistanceTournee(res);
 
-                        if(distance < distanceMin)
-                        {
-                            distanceMin = distance;
-                            suivante = arrivee;
-                            index = res.IndexOf(depart);
-                        }
+                    if(distance < distanceMin)
+                    {
+                        distanceMin = distance;
+                        index =  res.IndexOf(v.VilleDistance(res)) + 1;
+                        aInserer = v;
                     }
 
                 }
 
-                // Mise à jour des variables
-                res.Insert(index+1, suivante);
-                distanceMin = 99999;
-                nonVisite.Remove(suivante);
+                res.Insert(index, aInserer);
+                distanceMin = 9999;
+                nonVisite.Remove(aInserer);
             }
 
             return new Tournee(res);
