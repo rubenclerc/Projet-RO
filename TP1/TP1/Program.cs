@@ -8,7 +8,7 @@ namespace TP1
         static void Main()
         {
             // Villes
-            List<Ville> villes = Parser.Parse("G:\\Mon Drive\\Cours\\S4\\RO\\TP\\Projet-RO\\instances\\top80.txt");
+            List<Ville> villes = Parser.Parse("C:\\Users\\rc438799\\Desktop\\Projet-RO\\instances\\top80.txt");
 
             // Algo croissant
             AlgoCroissant algoCroissant = new AlgoCroissant(villes);

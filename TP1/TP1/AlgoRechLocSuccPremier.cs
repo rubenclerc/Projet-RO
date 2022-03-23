@@ -12,7 +12,9 @@ namespace TP1
         {
             // Initialisation
             List<Ville> villes = new List<Ville>(this.Villes);
-            Tournee courante = new Tournee(villes);
+            AlgoPlusProcheVoisin algo = new AlgoPlusProcheVoisin(villes);
+            Tournee courante = algo.Executer();
+           
             bool fini = false;
             Tournee voisin = null;
 
@@ -25,7 +27,7 @@ namespace TP1
                 {
                     courante = new Tournee(voisin.Villes);
                     fini = false;
-                }                
+                }
 
             }
 
