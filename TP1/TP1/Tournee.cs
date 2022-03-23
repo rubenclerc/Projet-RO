@@ -71,5 +71,30 @@ namespace TP1
 
             return res;
         }
+
+        public List<Ville> Renverser(int i, int j)
+        {
+            // Initialisation
+            Tournee voisine = new Tournee(new List<Ville>(this.Villes));
+            List<Ville> liste = new List<Ville>();
+
+            // Démêle un noeud de la tournée et renvoie une liste ordonnée
+            for(int k=0; k < i; k++)
+            {
+                liste.Add(voisine.Villes[k]);
+            }
+
+            for(int k = j;k >= i; k--)
+            {
+                liste.Add(voisine.Villes[k]);
+            }
+
+            for(int k=j+1; k < voisine.Villes.Count; k++)
+            {
+                liste.Add(voisine.Villes[k]);
+            }
+
+            return liste;
+        }
     }
 }
