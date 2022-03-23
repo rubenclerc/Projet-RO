@@ -55,14 +55,28 @@ namespace TP1
             // Algo Recherche Locale: echange de successeurs premier d'abord
             AlgoRechLocSuccPremier algoRechLocSuccPremier = new AlgoRechLocSuccPremier(villes);
             t = algoRechLocSuccPremier.Executer();
-            Console.Write("Algo recherche local (ech de succs premier d'abord): ");
+            Console.Write("Algo recherche locale (ech de succs premier d'abord): ");
             t.AfficheTour();
             Console.WriteLine("Cout: " + t.Cout() + "km");
 
             // Algo Recherche Locale: echange de successeurs meilleur d'abord
             AlgoRechLocSuccMeilleur algoRechLocSuccMeilleur = new AlgoRechLocSuccMeilleur(villes);
             t = algoRechLocSuccMeilleur.Executer();
-            Console.Write("Algo recherche local (ech de succs meilleur d'abord): ");
+            Console.Write("Algo recherche locale (ech de succs meilleur d'abord): ");
+            t.AfficheTour();
+            Console.WriteLine("Cout: " + t.Cout() + "km");
+
+            // Algo Recherche Locale: echange de sommets premier d'abord
+            AlgoRechLocSomPremier algoRechLocSomPremier = new AlgoRechLocSomPremier(villes);
+            t = algoRechLocSomPremier.Executer();
+            Console.Write("Algo recherche locale (ech de sommets premier d'abord): ");
+            t.AfficheTour();
+            Console.WriteLine("Cout: " + t.Cout() + "km");
+
+            // Algo Recherche Locale: echange de sommets meilleur d'abord
+            AlgoRechLocSomMeilleur algoRechLocSomMeilleur = new AlgoRechLocSomMeilleur(villes);
+            t = algoRechLocSomMeilleur.Executer();
+            Console.Write("Algo recherche locale (ech de sommets meilleur d'abord): ");
             t.AfficheTour();
             Console.WriteLine("Cout: " + t.Cout() + "km");
 

@@ -12,44 +12,43 @@ namespace TP1
         {
             // Initialisation
             List<Ville> villes = new List<Ville>(this.Villes);
-            Tournee courante = new Tournee(villes);
+            AlgoPlusProcheVoisin algo = new AlgoPlusProcheVoisin(villes);
+            Tournee courante = algo.Executer();
             bool fini = false;
-            Tournee voisin = null;
 
             while (!fini)
             {
                 fini = true;
-                voisin = this.Exploration(courante);
 
-                if (voisin.Cout() < courante.Cout())
+                // Explore le voisinage
+                for (int i = 0; i < courante.Villes.Count; i++)
                 {
-                    courante = new Tournee(voisin.Villes);
-                    fini = false;
+                    Tournee voisin = new Tournee(new List<Ville>(courante.Villes));
+
+                    if (i < voisin.Villes.Count - 1)
+                    {
+                        Ville tmp = voisin.Villes[i];
+                        voisin.Villes[i] = voisin.Villes[i + 1];
+                        voisin.Villes[i + 1] = tmp;
+                    }
+                    else
+                    {
+                        Ville tmp = voisin.Villes[i];
+                        voisin.Villes[i] = voisin.Villes[0];
+                        voisin.Villes[0] = tmp;
+                    }
+
+                    // Si le cout du voisinage est meilleur on le prend
+                    if (voisin.Cout() < courante.Cout())
+                    {
+                        courante = voisin;
+                        fini = false;
+                    }
+
                 }
-
             }
-
 
             return courante;
-        }
-
-        private Tournee Exploration(Tournee t)
-        {
-            // Initialisation
-            List<Ville> villes = t.Villes;
-            Ville tmp = null;
-
-            for (int i = 0; i < villes.Count; i++)
-            {
-                if (villes.IndexOf(villes[i]) < (villes.Count - 1))
-                {
-                    tmp = villes[i];
-                    villes[i] = villes[i + 1];
-                    villes[i + 1] = tmp;
-                }
-            }
-
-            return new Tournee(villes);
         }
     }
 }
