@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TP1
+namespace TPRO
 {
     class AlgoInsertionLoin : Algo
     {

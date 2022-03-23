@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 
-namespace TP1
+namespace TPRO
 {
     public class Parser
     {
